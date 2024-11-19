@@ -58,7 +58,6 @@ def upload():
     word_results = model_words.predict(img, confidence=50, overlap=50).json()
     words = word_results['predictions']
 
-    # Handle case where no words are detected
     if not words:
         return render_template('result.html', result="No text detected", image_url=file_path)
 
@@ -70,14 +69,11 @@ def upload():
         x1, y1 = max(0, int(x - w / 2)), max(0, int(y - h / 2))
         x2, y2 = int(x + w / 2), int(y + h / 2)
 
-        # Handle case for single word
         word_crop = img[y1:y2, x1:x2] if len(sorted_words) > 1 else img
 
-        # Process the word crop with the letter detection model
         letter_results = model_letters.predict(word_crop, confidence=50, overlap=50).json()
         letters = sorted(letter_results['predictions'], key=lambda pred: pred['x'])
 
-        # Combine letters to form the word
         detected_word = ''.join([letter['class'] for letter in letters])
         detected_words.append(detected_word)
 
