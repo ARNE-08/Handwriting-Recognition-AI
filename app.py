@@ -11,7 +11,7 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 rf = Roboflow(api_key="5lMKXqFohUNwc7trYqOe")
 project_words = rf.workspace().project("text-recognition-zowl1")
 project_letters = rf.workspace().project("handwriting-recognition-xyekz")
-model_words = project_words.version(1).model
+model_words = project_words.version(3).model
 model_letters = project_letters.version(4).model
 
 def sort_predictions_by_yx(predictions, y_threshold=20):
