@@ -7,12 +7,95 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background: white;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        h1 {
+            color: #4CAF50;
+            font-size: 24px;
+            text-align: center;
+        }
+
+        .result-box {
+            background-color: #f0f0f0;
+            border-left: 5px solid #4CAF50;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+            line-height: 1.8;
+            font-size: 24px;
+            color: #333;
+            white-space: pre-wrap; /* Ensures line breaks are preserved */
+            letter-spacing: 2px; /* Adds slight spacing between letters */
+            text-align: left; /* Ensures no text indentation */
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 20px auto;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+
+        a:hover {
+            background-color: #45a049;
+        }
+
+        footer {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 14px;
+            color: #888;
         }
     </style>
 </head>
 <body>
-    <h1>Detected Text: {{ result }}</h1>
-    <img src="{{ image_url }}" alt="Uploaded Image" style="max-width: 100%; height: auto;">
-    <br><a href="/">Upload Another Image</a>
+    <header>
+        <h1>Text Detection Results</h1>
+    </header>
+    <div class="container">
+        <h1>Detected Text</h1>
+        <div class="result-box">
+            {{ result }}
+        </div>
+        <img src="{{ image_url }}" alt="Uploaded Image">
+        <a href="/">Upload Another Image</a>
+    </div>
+    <footer>
+        Powered by Flask & Roboflow
+    </footer>
 </body>
 </html>
